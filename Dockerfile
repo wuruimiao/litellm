@@ -31,10 +31,10 @@ RUN rm -rf dist/* && python -m build
 RUN ls -1 dist/*.whl | head -1
 
 # Install the package
-RUN pip install dist/*.whl
+RUN pip install dist/*.whl -i https://mirrors.aliyun.com/pypi/simple/
 
 # install dependencies as wheels
-RUN pip wheel --no-cache-dir --wheel-dir=/wheels/ -r requirements.txt
+RUN pip wheel --no-cache-dir --wheel-dir=/wheels/ -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 
 # ensure pyjwt is used, not jwt
 RUN pip uninstall jwt -y
